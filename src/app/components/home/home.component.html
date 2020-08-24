@@ -1,0 +1,13 @@
+<div class="card mb-5" *ngFor="let goal of goals">
+  <h3>{{ goal.name }}</h3>
+  <p>{{ goal.description }}</p>
+  <div *ngIf="goal.showDescription">
+    <button
+      class="btn btn-success mb-4"
+      (click)="clickedFunction(goal.showDescription)"
+    >
+      Click Me
+    </button>
+    <h6 *ngIf="nameValue">{{ nameValue }}</h6>
+  </div>
+</div>
