@@ -11,3 +11,8 @@
     <h6 *ngIf="nameValue">{{ nameValue }}</h6>
   </div>
 </div>
+<div *ngIf="goals.length === 0">
+  <div class="container">
+    <button class="btn btn-success">No Goals</button>
+  </div>
+</div>
