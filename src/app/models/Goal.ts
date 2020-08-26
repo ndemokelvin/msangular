@@ -3,4 +3,5 @@ export interface Goal {
   showDescription: boolean;
   description: string;
   creator: string;
+  id: any;
 }
