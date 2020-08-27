@@ -7,9 +7,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { CommonModule } from '@angular/common';
+import { SingleGoalComponent } from './components/single-goal/single-goal.component';
+import { GoalDetailsComponent } from './components/goal-details/goal-details.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    SingleGoalComponent,
+    GoalDetailsComponent,
+  ],
   imports: [BrowserModule, ReactiveFormsModule, CommonModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

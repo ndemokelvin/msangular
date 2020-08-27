@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Goal } from '../../models/Goal';
 import { GoalService } from '../../services/goal/goal.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,27 +13,17 @@ export class HomeComponent {
   goals: Goal[] = [];
   goalForm: FormGroup;
 
-  constructor(private goalService: GoalService, private fb: FormBuilder) {
+  constructor(
+    private goalService: GoalService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.goals = goalService.getGoalsList;
-
-    this.goalForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      creator: ['', Validators.required],
-    });
   }
-
-  onGoalSubmit = () => {
-    // const { name, description, creator } = this.goalForm.value;
-    this.goalService.addGoal({
-      ...this.goalForm.value,
-      showDescription: true,
-      id: Date.now().toString(),
-    });
-  };
 
   deleteGoal(id) {
     this.goalService.deleteGoal(id);
+    this.goals = this.goalService.getGoalsList;
   }
 
   @Output() clicked = new EventEmitter<boolean>();
@@ -40,5 +31,9 @@ export class HomeComponent {
 
   clickedFunction(isClicked: boolean) {
     this.clicked.emit(isClicked);
+  }
+
+  viewGoal(id: any) {
+    this.router.navigate(['goals', id]);
   }
 }

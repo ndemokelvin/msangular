@@ -71,4 +71,11 @@ export class GoalService {
     console.log(id);
     this.goals = this.goals.filter((goal) => goal.id !== id);
   };
+
+  getGoal = (id: any): Goal => {
+    let goal;
+
+    goal = this.goals.filter((goal) => goal.id == id)[0];
+    return goal;
+  };
 }

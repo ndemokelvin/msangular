@@ -5,15 +5,20 @@
         <h3>{{ goal.name }}</h3>
         <p>{{ goal.description }}</p>
         <div *ngIf="goal.showDescription">
-          <button
-            class="btn btn-success mb-4"
-            (click)="clickedFunction(goal.showDescription)"
-          >
-            Click Me
-          </button>
-          <button class="btn btn-danger" (click)="deleteGoal(goal.id)">
-            Delete Goal
-          </button>
+          <div class="mb-3">
+            <button
+              class="btn btn-success ml-2"
+              (click)="clickedFunction(goal.showDescription)"
+            >
+              Click Me
+            </button>
+            <button class="btn btn-danger ml-2" (click)="deleteGoal(goal.id)">
+              Delete Goal
+            </button>
+            <button class="btn btn-secondary ml-2" (click)="viewGoal(goal.id)">
+              View Goal
+            </button>
+          </div>
           <h6 *ngIf="nameValue">{{ nameValue }}</h6>
         </div>
       </div>
@@ -21,57 +26,6 @@
         <div class="container">
           <button class="btn btn-success">No Goals</button>
         </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="mt-5">
-        <form [formGroup]="goalForm" (ngSubmit)="onGoalSubmit()">
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm"
-                >Name</span
-              >
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Small"
-              formControlName="name"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </div>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm"
-                >Description</span
-              >
-            </div>
-            <input
-              type="text"
-              formControlName="description"
-              class="form-control"
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </div>
-          <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm"
-                >Creator</span
-              >
-            </div>
-            <input
-              type="text"
-              formControlName="creator"
-              class="form-control"
-              aria-label="Small"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-success">Add Goal</button>
-          </div>
-        </form>
       </div>
     </div>
   </div>
